@@ -1,0 +1,10 @@
+.DS_STORE
+
+dist
+out
+node_modules
+npm-debug.log.*
+src/**/*.js
+.vscode
+package-lock.json
+server/static
