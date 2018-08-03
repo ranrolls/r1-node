@@ -1,0 +1,13 @@
+<% include ../view-partials/header.ejs %>
+<h1>Express Home Page on port : <%= port %></h1>
+<% 
+if(id === 'index') {  
+    for(i = 0; i < 5; i++){ 
+%>
+    For loop counter no. : <%= i %> <br />
+<%
+    }
+%>
+    index page condition <%- text %>
+<%  }   %>
+<% include ../view-partials/footer.ejs %>
