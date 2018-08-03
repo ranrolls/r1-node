@@ -42,7 +42,10 @@ module.exports = {
             }
         },
         plugins: {
-            html: require('html-webpack-plugin')
+            html: require('html-webpack-plugin'),
+            htmlTemplate: 'index.html',
+            extractText: require('extract-text-webpack-plugin'),
+            webMerge: require('webpack-merge')
         }
     },
     projectRoot: projectRoot,

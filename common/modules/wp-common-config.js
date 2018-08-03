@@ -1,6 +1,3 @@
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var pathHelp = require('../build-config/variables');
 module.exports = {
   entry: {
@@ -33,7 +30,7 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: pathHelp.client.clientSrc,
-        loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
+        loader: pathHelp.gWebpack.plugins.extractText.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
       },
       {
         test: /\.css$/,
@@ -44,14 +41,19 @@ module.exports = {
   },
   plugins: [
     // Workaround for angular/angular#11580
-    new webpack.ContextReplacementPlugin(
+    new pathHelp.gWebpack.core.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)@angular/,
       pathHelp.client.clientSrc, // location of your src
       {} // a map of your routes
     ),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'vendor', 'polyfills']
+    new pathHelp.gWebpack.core.optimize.CommonsChunkPlugin({
+      name: ['vendor', 'polyfills']
     }),
+    new pathHelp.gWebpack.plugins.html({
+      title: 'My Awesome application',
+      template: pathHelp.client.clientSrc + "/index.html",
+      chunks: ['polyfills', 'vendor', 'login'],
+  })
   ]
 };
