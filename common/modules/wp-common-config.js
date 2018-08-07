@@ -1,9 +1,9 @@
 var pathHelp = require('../build-config/variables');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 module.exports = {
   entry: {
     'polyfills': pathHelp.gWebpack.modules.core.moduleConfig + pathHelp.gWebpack.modules.core.polyfills,
     'vendor': pathHelp.gWebpack.modules.core.moduleConfig + pathHelp.gWebpack.modules.core.vendor,
-    'login': pathHelp.gWebpack.modules.login.entry
   },
   resolve: {
     extensions: ['.ts', '.js']
@@ -15,28 +15,32 @@ module.exports = {
         loaders: [
           {
             loader: 'awesome-typescript-loader',
-            options: { configFileName: pathHelp.gWebpack.modules.login.tsConfig }
+            options: { configFileName: pathHelp.gWebpack.modules.core.tsConfig }
           } , 'angular2-template-loader'
         ]
-      },
-      {
+      }, {
         test: /\.html$/,
         loader: 'html-loader'
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        loader: 'file-loader?name=assets/[name].[hash].[ext]'
-      },
-      {
-        test: /\.css$/,
-        exclude: pathHelp.client.clientSrc,
-        loader: pathHelp.gWebpack.plugins.extractText.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
-      },
-      {
+      }, {
+        test: /\.(sass|scss)$/,
+        use: [
+            'to-string-loader',
+            { 
+                loader: 'css-loader',
+                options: {
+                    minimize: true
+                }
+            },
+            "sass-loader"
+        ]
+      }, {
         test: /\.css$/,
         include: pathHelp.client.clientSrc,
         loader: 'raw-loader'
-      }
+      }, {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico|otf)$/,
+        use: 'file-loader?name=assets/[name].[hash].[ext]'
+      },
     ]
   },
   plugins: [
@@ -47,13 +51,32 @@ module.exports = {
       pathHelp.client.clientSrc, // location of your src
       {} // a map of your routes
     ),
-    new pathHelp.gWebpack.core.optimize.CommonsChunkPlugin({
-      name: ['vendor', 'polyfills']
-    }),
-    new pathHelp.gWebpack.plugins.html({
-      title: 'My Awesome application',
-      template: pathHelp.client.clientSrc + "/index.html",
-      chunks: ['polyfills', 'vendor', 'login'],
-  })
-  ]
+    // deprecated against new optimisationProperty as splitChunks
+    // new pathHelp.gWebpack.core.optimize.CommonsChunkPlugin({
+    //   name: ['vendor', 'polyfills']
+    // }),
+    // new pathHelp.gWebpack.plugins.extractText({
+    //   filename: '[name].css'
+    // }),
+    new CheckerPlugin(),
+    new pathHelp.gWebpack.core.DefinePlugin({
+      'process.env.NODE_ENV': '"development"'
+    })
+  ],
+  optimization: {
+    // description: "Enables/Disables integrated optimizations",
+    splitChunks: {
+      // description: "Optimize duplication and caching by splitting chunks by shared modules and cache group",
+      cacheGroups: {
+        vendors: {
+          name: 'vendors',
+        },
+        polyfills: {
+            name: 'polyfills',
+        }
+      }
+      // name: ['vendor', 'polyfills']
+    }
+  },
+  mode: "development", // "production", "none"
 };

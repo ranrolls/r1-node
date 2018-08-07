@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LoginComponent } from './login.comp';
+import { LoginComp } from './comp';
+import { LoginFormComp } from '../lib/presentation/login-form/comp';
 
 @NgModule({
     imports: [
         BrowserModule,
     ],
     declarations: [
-        LoginComponent
+        LoginFormComp,
+        LoginComp
     ],
     bootstrap: [
-        LoginComponent
+        LoginComp
     ],
     providers: [
     ]

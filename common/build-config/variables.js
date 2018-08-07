@@ -33,6 +33,7 @@ module.exports = {
                 config: projectRoot + "/common/build-config/dev-config.js",
                 vendor: "/vendor.ts",
                 polyfills: "/polyfills.ts",
+                tsConfig: projectRoot + "/common/modules/tsconfig.json",
             },
             login: {
                 entry: projectRoot + "/server/client/src/lib/presentation/" + "login/index.ts",
