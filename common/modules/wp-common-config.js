@@ -36,7 +36,10 @@ module.exports = {
       }, {
         test: /\.css$/,
         include: pathHelp.client.clientSrc,
-        loader: 'raw-loader'
+        use: [
+          pathHelp.gWebpack.loader.miniCssExtract.loader,
+          'raw-loader'
+        ]
       }, {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico|otf)$/,
         use: 'file-loader?name=assets/[name].[hash].[ext]'
@@ -61,7 +64,9 @@ module.exports = {
     new CheckerPlugin(),
     new pathHelp.gWebpack.core.DefinePlugin({
       'process.env.NODE_ENV': '"development"'
-    })
+    }),
+    // skip build on error
+    new pathHelp.gWebpack.core.NoEmitOnErrorsPlugin()
   ],
   optimization: {
     // description: "Enables/Disables integrated optimizations",
@@ -79,4 +84,9 @@ module.exports = {
     }
   },
   mode: "development", // "production", "none"
+  devtool: 'inline-source-map',
+  devServer: {
+    historyApiFallback: true,
+    stats: 'minimal',
+  },
 };

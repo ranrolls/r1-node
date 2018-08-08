@@ -1,10 +1,8 @@
 var pathHelp = require('./variables');
-module.exports = pathHelp.gWebpack.plugins.webMerge(
-  require(pathHelp.gWebpack.commonConfig), {
+module.exports = {
     entry: {
       'login': pathHelp.gWebpack.modules.login.entry
     },
-    devtool: 'inline-source-map',
     output: {
       path: pathHelp.gWebpack.modules.login.output,
       filename: '[name].js',
@@ -14,13 +12,8 @@ module.exports = pathHelp.gWebpack.plugins.webMerge(
       new pathHelp.gWebpack.plugins.html({
         title: 'My Awesome application',
         filename: 'login.html',
-        template: pathHelp.client.clientSrc + "/index.html",
-        chunks: ['polyfills', 'vendor', 'vendor.chunk', 'login'],
+        template: pathHelp.client.clientSrc + pathHelp.gWebpack.htmlTemplate,
+        chunks: ['polyfills', 'vendor', 'login'],
       })
-    ],
-    devServer: {
-      historyApiFallback: true,
-      stats: 'minimal'
-    }
+    ]
   }
-);
