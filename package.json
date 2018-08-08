@@ -10,7 +10,7 @@
     "build": "npm run app-build",
     "cb": "npm run client-build",
     "cd": "npm run client-dev",
-    "client-build": "webpack --config common/build-config/wp-config.js --progress -d --env=dev --mode=development",
+    "client-build": "webpack --config common/build-config/wp-config.js --progress -d --env=dev --mode=development --module=login",
     "clinet-prod": "NODE_ENV=production webpack --config common/build-config/prod-config.js -p --env=prod",
     "client-dev": "webpack-serve --config common/build-config/wp-config.js --open",
     "tsc": "tsc",

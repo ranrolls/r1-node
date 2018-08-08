@@ -3,13 +3,16 @@ module.exports = {
     webpackEntry: projectRoot + "/server/node/config/express-server.js",
     gWebpack: {
         core: require('webpack'),
-        commonConfig: projectRoot + "/common/modules/wp-common-config.js",
         htmlTemplate: '/index.html',
-        webMerge: require('webpack-merge'),
+        config: {
+            common: projectRoot + "/common/modules/wp-common-config.js",
+            development: projectRoot + "/common/build-config/dev-config.js",
+            production: projectRoot + "/common/build-config/prod-config.js",
+        },
         modules: {
             core: {
                 moduleConfig: projectRoot + "/common/modules/",
-                config: projectRoot + "/common/build-config/dev-config.js",
+                config: projectRoot + "/common/modules/login/wp-config",
                 vendor: "vendor.ts",
                 polyfills: "polyfills.ts",
                 tsConfig: projectRoot + "/common/modules/tsconfig.json",
@@ -18,7 +21,6 @@ module.exports = {
                 entry: projectRoot + "/server/client/src/lib/presentation/" + "login/index.ts",
                 output: projectRoot + "/dist/cache/login/",
                 wpConfig: projectRoot + "/common/modules/login/wp-config",
-                tsConfig: projectRoot + "/common/modules/login/tsconfig.json",
             }
         },
         plugins: {
@@ -27,6 +29,9 @@ module.exports = {
         },
         loader: {
             miniCssExtract: require("mini-css-extract-plugin"),
+        },
+        tools: {
+            webMerge: require('webpack-merge'),
         }
     },
     server: {
