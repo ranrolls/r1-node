@@ -3,11 +3,6 @@ module.exports = {
     entry: {
         'login': pathHelp.gWebpack.modules.login.entry,
     },
-    output: {
-      path: pathHelp.gWebpack.modules.login.output,
-      filename: '[name].js',
-      chunkFilename: '[id].chunk.js'
-    },
     plugins: [
       new pathHelp.gWebpack.plugins.html({
         title: 'My Awesome application',

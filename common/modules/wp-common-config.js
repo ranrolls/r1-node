@@ -61,12 +61,7 @@ module.exports = {
     // new pathHelp.gWebpack.plugins.extractText({
     //   filename: '[name].css'
     // }),
-    new CheckerPlugin(),
-    new pathHelp.gWebpack.core.DefinePlugin({
-      'process.env.NODE_ENV': '"development"'
-    }),
-    // skip build on error
-    new pathHelp.gWebpack.core.NoEmitOnErrorsPlugin()
+    new CheckerPlugin()
   ],
   optimization: {
     // description: "Enables/Disables integrated optimizations",

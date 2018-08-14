@@ -20,12 +20,16 @@ module.exports = {
             login: {
                 entry: projectRoot + "/server/client/src/lib/presentation/" + "login/index.ts",
                 output: projectRoot + "/dist/cache/login/",
+                prodOutput: projectRoot + "/dist/prod/login/",
                 wpConfig: projectRoot + "/common/modules/login/wp-config",
             }
         },
         plugins: {
             html: require('html-webpack-plugin'),
             extractText: require('extract-text-webpack-plugin'),
+            uglifyJs: require("uglifyjs-webpack-plugin"),
+            optimizeCSSAssets: require("optimize-css-assets-webpack-plugin"),
+            closure: require('closure-webpack-plugin'),
         },
         loader: {
             miniCssExtract: require("mini-css-extract-plugin"),
