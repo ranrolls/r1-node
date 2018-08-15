@@ -1,10 +1,6 @@
 var pathHelp = require('../build-config/variables');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 module.exports = {
-  entry: {
-    'polyfills': pathHelp.gWebpack.modules.core.moduleConfig + pathHelp.gWebpack.modules.core.polyfills,
-    'vendor': pathHelp.gWebpack.modules.core.moduleConfig + pathHelp.gWebpack.modules.core.vendor,
-  },
   resolve: {
     extensions: ['.ts', '.js']
   },
@@ -63,19 +59,4 @@ module.exports = {
     // }),
     new CheckerPlugin()
   ],
-  optimization: {
-    // description: "Enables/Disables integrated optimizations",
-    splitChunks: {
-      // description: "Optimize duplication and caching by splitting chunks by shared modules and cache group",
-      cacheGroups: {
-        vendors: {
-          name: 'vendors',
-        },
-        polyfills: {
-            name: 'polyfills',
-        }
-      }
-      // name: ['vendor', 'polyfills']
-    }
-  },
 };

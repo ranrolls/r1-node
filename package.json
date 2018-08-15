@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "start": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
+    "start": "concurrently \"npm run server-dev\" \"webpack-serve --config common/build-config/wp-config.js\"",
     "app-build": "npm run server-build && npm run client-build",
     "sb": "npm run server-build",
     "sd": "npm run server-dev",
-    "server-dev": "nodemon server/node/config/express-server.js --watch ",
+    "server-dev": "nodemon server/node/config/express-server.js --config server/node/config/nodemon.json",
     "server-build": "node server/node/config/express-server.js",
     "server-prod": "node server/node/config/express-server.js",
     "run-prod": "echo \"Runing production code\"",
@@ -12,8 +12,8 @@
     "cb": "npm run client-build",
     "cd": "npm run client-dev",
     "cp": "npm run client-prod",
-    "client-build": "webpack --config common/build-config/wp-config.js --progress -d --env=dev --mode=development --module=login",
-    "client-prod": "webpack --config common/build-config/wp-config.js -p --env=prod --mode=production --module=login",
+    "client-build": "webpack --config common/build-config/wp-config.js --progress -d --env.development --module=login",
+    "client-prod": "webpack --config common/build-config/wp-config.js -p --env.production --module=login",
     "client-dev": "webpack-serve --config common/build-config/wp-config.js --open",
     "tsc": "tsc",
     "tsc:w": "tsc -w",

@@ -1,12 +1,12 @@
 var pathHelp = require('./variables');
 let gWpConfig = [];
 // console.log(pathHelp.cmdFlags);
-if(pathHelp.cmdFlags.mode === 'production') {
+if(typeof pathHelp.cmdFlags.env !== 'undefined' && pathHelp.cmdFlags.env.production) {
   gWpConfig.intermediatConfig = require(pathHelp.gWebpack.config.production);
 } else {
   gWpConfig.intermediatConfig = require(pathHelp.gWebpack.config.development);
 }
-if(pathHelp.cmdFlags.modules) {
+if(typeof pathHelp.cmdFlags.modules !== 'undefined' && pathHelp.cmdFlags.modules) {
   switch(pathHelp.cmdFlags.modules) {
     default:
       gWpConfig.config = require(pathHelp.gWebpack.modules[path.cmdFlags.modules].wpConfig);

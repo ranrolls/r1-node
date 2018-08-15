@@ -9,7 +9,6 @@ app.set('view engine', nodeVar.common.viewEngine);
 app.set('views', nodeVar.common.viewPath);
 // set variable which need to passed to view
 app.locals.siteTitle = "r1-node page title";
-app.locals.rootNmPath = nodeVar.common.rootNmPath;
 // import modules
 app.use(express.static(nodeVar.common.staticAssetsPath));
 app.use(require(nodeVar.modules.index.routePath));

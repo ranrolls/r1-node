@@ -2,7 +2,7 @@ var pathHelp = require('./variables');
 module.exports = {
   mode: "development", // "production", "none"
   output: {
-    path: pathHelp.gWebpack.modules.login.output,
+    path: pathHelp.dist.devDist,
     filename: '[name].js',
     chunkFilename: '[id].chunk.js'
   },

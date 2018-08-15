@@ -13,14 +13,14 @@ module.exports = {
             core: {
                 moduleConfig: projectRoot + "/common/modules/",
                 config: projectRoot + "/common/modules/login/wp-config",
-                vendor: "vendor.ts",
-                polyfills: "polyfills.ts",
                 tsConfig: projectRoot + "/common/modules/tsconfig.json",
+                polyfills: "polyfills.ts",
+                vendor: "vendor.ts",
             },
             login: {
                 entry: projectRoot + "/server/client/src/lib/presentation/" + "login/index.ts",
-                output: projectRoot + "/dist/cache/login/",
-                prodOutput: projectRoot + "/dist/prod/login/",
+                output: projectRoot + "/dist/cache/",
+                prodOutput: projectRoot + "/dist/prod/",
                 wpConfig: projectRoot + "/common/modules/login/wp-config",
                 ejsTemplate: "login/index.html",
             }

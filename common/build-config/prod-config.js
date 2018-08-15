@@ -2,7 +2,7 @@ var pathHelp = require('./variables');
 module.exports = {
   mode: "production", // "production" | "development" | "none"  // Chosen mode tells webpack to use its built-in optimizations accordingly.
   output: {
-    path: pathHelp.gWebpack.modules.login.prodOutput,
+    path: pathHelp.dist.prodDist,
     filename: '[name].js',
     chunkFilename: '[id].chunk.js'
   },
