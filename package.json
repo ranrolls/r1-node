@@ -1,13 +1,11 @@
 {
   "scripts": {
-    "start": "concurrently \"npm run server-dev\" \"webpack-serve --config common/build-config/wp-config.js\"",
+    "start": "echo \"Runing server and client together not found. Because webpack-serve serves src folder files\"",
     "app-build": "npm run server-build && npm run client-build",
     "sb": "npm run server-build",
     "sd": "npm run server-dev",
     "server-dev": "nodemon server/node/config/express-server.js --config server/node/config/nodemon.json",
     "server-build": "node server/node/config/express-server.js",
-    "server-prod": "node server/node/config/express-server.js",
-    "run-prod": "echo \"Runing production code\"",
     "build": "npm run app-build",
     "cb": "npm run client-build",
     "cd": "npm run client-dev",
@@ -36,6 +34,7 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "^2.24.6",
     "clean-webpack-plugin": "^0.1.19",
     "closure-webpack-plugin": "^1.0.1",
     "concurrently": "^3.6.1",
