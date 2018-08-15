@@ -2,8 +2,9 @@
   "scripts": {
     "start": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
     "app-build": "npm run server-build && npm run client-build",
-    "server-dev": "nodemon server/node/config/express-server.js --watch ",
     "sb": "npm run server-build",
+    "sd": "npm run server-dev",
+    "server-dev": "nodemon server/node/config/express-server.js --watch ",
     "server-build": "node server/node/config/express-server.js",
     "server-prod": "node server/node/config/express-server.js",
     "run-prod": "echo \"Runing production code\"",

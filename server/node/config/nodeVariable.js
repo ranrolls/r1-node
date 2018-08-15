@@ -7,9 +7,10 @@ module.exports = {
     common: {
         rootPath: rootPath,
         serverModulesPath: serverModulesPath,
-        staticAssetsPath: rootPath + "/server/static/",
+        // staticAssetsPath: rootPath + "/server/static/",
+        staticAssetsPath: rootPath + "/dist/dev/",
         viewEngine: "ejs",
-        viewPath: serverModulesPath,
+        viewPath: rootPath + "/dist/dev/",
         clientPresentation: clientPresentation,
         rootNmPath: rootNmPath
     },

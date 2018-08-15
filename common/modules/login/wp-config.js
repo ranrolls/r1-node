@@ -5,9 +5,13 @@ module.exports = {
     },
     plugins: [
       new pathHelp.gWebpack.plugins.html({
-        title: 'My Awesome application',
         filename: 'login.html',
         template: pathHelp.client.clientSrc + pathHelp.gWebpack.htmlTemplate,
+        chunks: ['polyfills', 'vendor', 'login'],
+      }),
+      new pathHelp.gWebpack.plugins.html({
+        filename: 'login.ejs',
+        template: '!!raw-loader!' + pathHelp.client.clientModules + pathHelp.gWebpack.modules.login.ejsTemplate,
         chunks: ['polyfills', 'vendor', 'login'],
       })
     ]

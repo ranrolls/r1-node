@@ -2,7 +2,7 @@ let express = require('express'), router = express.Router();
 router.get(['/', '/index'], (req, res) => {
     let port = req.app.get('port'); // get global set variable served on every route
     // send res to frontend with variables
-    res.render('index/view',{
+    res.render('login',{
         id: 'index',
         title: 'index page',
         text: '<b>Bold Text</b>',

@@ -22,6 +22,7 @@ module.exports = {
                 output: projectRoot + "/dist/cache/login/",
                 prodOutput: projectRoot + "/dist/prod/login/",
                 wpConfig: projectRoot + "/common/modules/login/wp-config",
+                ejsTemplate: "login/index.html",
             }
         },
         plugins: {
