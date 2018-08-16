@@ -29,4 +29,9 @@ module.exports = {
       }
     }
   },
+  serve: {
+    open: {
+      path: 'login.html' // The url path on the server to open.
+    },
+  }
 }
