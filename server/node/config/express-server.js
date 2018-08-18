@@ -19,3 +19,5 @@ const server = app.listen(app.get('port'), () => {
     browserSync({        open: false,        port: app.get('port') + 1,
         proxy: 'localhost:' + app.get('port'),        ui: false    });
 });
+
+module.exports = app;

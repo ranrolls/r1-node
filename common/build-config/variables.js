@@ -19,10 +19,13 @@ module.exports = {
             },
             login: {
                 entry: projectRoot + "/server/client/src/lib/presentation/" + "login/index.ts",
-                output: projectRoot + "/dist/cache/",
-                prodOutput: projectRoot + "/dist/prod/",
                 wpConfig: projectRoot + "/common/modules/login/wp-config",
                 ejsTemplate: "login/index.html",
+            },
+            index: {
+                entry: projectRoot + "/server/client/src/lib/presentation/" + "index/index.ts",
+                wpConfig: projectRoot + "/common/modules/index/wp-config",
+                ejsTemplate: "index/index.html",
             }
         },
         plugins: {

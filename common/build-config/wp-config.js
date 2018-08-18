@@ -13,10 +13,12 @@ if(typeof pathHelp.cmdFlags.modules !== 'undefined' && pathHelp.cmdFlags.modules
       break;
   }
 } else {
-  gWpConfig.config = require(pathHelp.gWebpack.modules.core.config);
+  gWpConfig.config1 = require(pathHelp.gWebpack.modules.core.config);
+  gWpConfig.config2 = require(pathHelp.gWebpack.modules.index.wpConfig);
 }
 module.exports = pathHelp.gWebpack.tools.webMerge(
   require(pathHelp.gWebpack.config.common),
   gWpConfig.intermediatConfig,
-  gWpConfig.config
+  gWpConfig.config1,
+  gWpConfig.config2
 );
