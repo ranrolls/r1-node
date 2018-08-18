@@ -48,8 +48,8 @@ module.exports = {
     },
     client : {
         core: projectRoot + "/server/client",
-        clientSrc : projectRoot + "/server/client/src",
-        clientModules: projectRoot + "/server/client/src/lib/presentation/",
+        src : projectRoot + "/server/client/src",
+        modules: projectRoot + "/server/client/src/lib/presentation/",
     },
     dist : {
         core: projectRoot + "/dist",

@@ -8,12 +8,12 @@ module.exports = {
   plugins: [
     new pathHelp.gWebpack.plugins.html({
       filename: 'index.html',
-      template: pathHelp.client.clientSrc + pathHelp.gWebpack.htmlTemplate,
+      template: pathHelp.client.src + pathHelp.gWebpack.htmlTemplate,
       chunks: ['index_polyfills', 'index_vendor', 'index'],
     }),
     new pathHelp.gWebpack.plugins.html({
       filename: 'index.ejs',
-      template: '!!raw-loader!' + pathHelp.client.clientModules + pathHelp.gWebpack.modules.index.ejsTemplate,
+      template: '!!raw-loader!' + pathHelp.client.modules + pathHelp.gWebpack.modules.index.ejsTemplate,
       chunks: ['index_polyfills', 'index_vendor', 'index'],
     })
   ],

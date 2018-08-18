@@ -17,9 +17,9 @@ module.exports = {
     stats: 'minimal',
   },
   performance: {
-    hints: 'warning'
+    hints: 'warning', // false | "error" | "warning"
   },
-  stats: 'normal', // errors-only, minimal, none, normal, verbose
+  stats: 'errors-only', // errors-only, minimal, none, normal, verbose
   cache: true,
   serve: {
     // host: 'localhost',

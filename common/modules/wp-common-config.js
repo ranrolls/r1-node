@@ -20,20 +20,30 @@ module.exports = {
       }, {
         test: /\.(sass|scss)$/,
         use: [
-            'to-string-loader',
-            { 
-                loader: 'css-loader',
-                options: {
-                    minimize: true
-                }
+          'to-string-loader',
+          // fallback to style-loader in development
+          process.env.NODE_ENV !== 'production' ? 'style-loader' : pathHelp.gWebpack.loader.miniCssExtract.loader,
+          { 
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              minimize: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              includePaths: [pathHelp.nm],
+              data: "$env: " + process.env.NODE_ENV + ";"
             },
-            "sass-loader"
+          },
         ]
       }, {
         test: /\.css$/,
-        include: pathHelp.client.clientSrc,
+        include: pathHelp.client.src,
         use: [
-          pathHelp.gWebpack.loader.miniCssExtract.loader,
+          process.env.NODE_ENV !== 'production' ? 'style-loader' : pathHelp.gWebpack.loader.miniCssExtract.loader,
           'raw-loader'
         ]
       }, {
@@ -46,9 +56,12 @@ module.exports = {
     // Workaround for angular/angular#11580
     new pathHelp.gWebpack.core.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
-      /angular(\\|\/)core(\\|\/)@angular/,
-      pathHelp.client.clientSrc, // location of your src
-      {} // a map of your routes
+      // For Angular 5, see also https://github.com/angular/angular/issues/20357#issuecomment-343683491
+      /angular(\\|\/)core(\\|\/)(@angular|esm5)/,
+      pathHelp.client.src, // location of your src
+      {
+        // your Angular Async Route paths relative to this root directory
+      }
     ),
     // deprecated against new optimisationProperty as splitChunks
     // new pathHelp.gWebpack.core.optimize.CommonsChunkPlugin({

@@ -1,18 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LoginComp } from './comp';
-import { LoginFormComp } from '../lib/presentation/login-form/comp';
-
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { AppComp } from './comp';
+import { WrapperComp } from '../lib/presentation/wrapper/comp';
+import { FormComp } from '../lib/presentation/form/comp';
+import { SignUpComp } from '../lib/presentation/sign-up/comp';
+import { SignInComp } from '../lib/presentation/sign-in/comp';
 @NgModule({
     imports: [
+        ButtonModule,
+        CardModule,
         BrowserModule,
     ],
     declarations: [
-        LoginFormComp,
-        LoginComp
+        SignInComp,
+        SignUpComp,
+        FormComp,
+        WrapperComp,
+        AppComp
     ],
     bootstrap: [
-        LoginComp
+        AppComp
     ],
     providers: [
     ]

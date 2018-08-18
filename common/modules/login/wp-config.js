@@ -8,14 +8,14 @@ module.exports = {
   plugins: [
     new pathHelp.gWebpack.plugins.html({
       filename: 'login.html',
-      template: pathHelp.client.clientSrc + pathHelp.gWebpack.htmlTemplate,
+      template: pathHelp.client.src + pathHelp.gWebpack.htmlTemplate,
       chunks: ['login_polyfills', 'login_vendor', 'login'],
     }),
-    new pathHelp.gWebpack.plugins.html({
-      filename: 'login.ejs',
-      template: '!!raw-loader!' + pathHelp.client.clientModules + pathHelp.gWebpack.modules.login.ejsTemplate,
-      chunks: ['login_polyfills', 'login_vendor', 'login'],
-    })
+    // new pathHelp.gWebpack.plugins.html({
+    //   filename: 'login.ejs',
+    //   template: '!!raw-loader!' + pathHelp.client.modules + pathHelp.gWebpack.modules.login.ejsTemplate,
+    //   chunks: ['login_polyfills', 'login_vendor', 'login'],
+    // })
   ],
   optimization: {
     splitChunks: {
