@@ -6,13 +6,21 @@ import('@angular/common');
 import('@angular/http');
 import('@angular/router');
 import('@angular/forms');
-// import('@angular/animations');
+import('@angular/animations');
 // RxJS
 import('rxjs');
 
 // PrimeNg
 import { CardModule } from 'primeng/card';
-// import('primeng/card');
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+
+// angular-fontawesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
+
+
 
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ...

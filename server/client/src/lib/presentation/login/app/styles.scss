@@ -1,3 +1,21 @@
-h1{
-    color: red;
+@import '../../../../../../../node_modules/primeng/resources/primeng.min.css';
+@import '../../../../../../../node_modules/primeng/resources/themes/nova-light/theme.css';
+@import '../../../../../../../node_modules/primeng/resources/components/button/button.css';
+.mt-10{
+    margin-top: 10px;
+}
+.p6{
+    padding: 6px;
+}
+.ta-c {
+    text-align: center; 
+}
+.vh-center-item {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.w100{
+    width: 100%;
 }

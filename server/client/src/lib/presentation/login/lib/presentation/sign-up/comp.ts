@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 @Component({
     selector: 'sign-up',
     templateUrl: 'view.html',
@@ -10,4 +11,5 @@ export class SignUpComp implements OnInit {
     }
     ngOnInit() {
     }
+    faPlus = faPlus;
 }
