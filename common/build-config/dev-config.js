@@ -1,5 +1,38 @@
 var pathHelp = require('./variables');
 module.exports = {
+  module: {
+    rules: [
+    {
+      test: /\.(sass|scss)$/,
+      use: [
+        'to-string-loader',
+        // fallback to style-loader in development
+        process.env.NODE_ENV !== 'production' ? 'style-loader' : pathHelp.gWebpack.loader.miniCssExtract.loader,
+        { 
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+            minimize: true
+          }
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+            includePaths: [pathHelp.nm],
+            data: "$env: " + process.env.NODE_ENV + ";"
+          },
+        },
+      ]
+    }, {
+      test: /\.css$/,
+      include: pathHelp.client.src,
+      use: [
+        'style-loader',
+        'raw-loader',
+      ]
+    },
+  ]},
   mode: "development", // "production", "none"
   output: {
     path: pathHelp.dist.devDist,

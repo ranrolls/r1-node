@@ -1,18 +1,21 @@
-const path = require('path');
+const path= require('path');
 const rootPath = path.resolve(__dirname, "../../../");
 const nodeVar = {
     serverModulesPath: rootPath + "/server/node/modules/",
     clientPresentation: rootPath + "/server/client/src/lib/presentation/",
     rootNmPath: rootPath + "/node_modules",
+    distDev: rootPath + "/dist/dev/",
+    distProd: rootPath + "/dist/prod/",
 }
 module.exports = {
     common: {
         rootPath: rootPath,
         serverModulesPath: nodeVar.serverModulesPath,
+        path: path,
         // staticAssetsPath: rootPath + "/server/static/",
-        staticAssetsPath: rootPath + "/dist/dev/",
+        staticAssetsPath: nodeVar.distProd,
         viewEngine: "ejs",
-        viewPath: rootPath + "/dist/dev/",
+        viewPath: nodeVar.distDev,
         clientPresentation: nodeVar.clientPresentation,
         rootNmPath: nodeVar.rootNmPath
     },
@@ -36,5 +39,32 @@ module.exports = {
         test: {
             routePath: nodeVar.serverModulesPath + "test" + "/route"
         }
+    },
+    tools: {
+        express: require('express'),
+        browserSync: require('browser-sync'),
+        bodyParser: require('body-parser'),
+        cookieParser: require('cookie-parser'),
+    },
+    errorHandler: {
+        default: (err, res, req, next) => {
+            res.status(err.status || 500);
+            res.render('error', {
+                message: err.message,
+                error: {}
+            })
+        },
+        dev: (err, res, req, next) => {
+            res.status(err.status || 500);
+            res.render('error', {
+                message: err.message,
+                error: {}
+            })
+        },
+        404: (res, req, next) => {
+            let err = new Error('404');
+            err.status = 404;
+            next(err);
+        },
     }
 }

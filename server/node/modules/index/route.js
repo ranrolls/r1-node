@@ -1,13 +1,6 @@
-let express = require('express'), router = express.Router();
+let nodeVars = require('../../config/nodeVariable');
+let express = nodeVars.tools.express, router = express.Router();
 router.get(['/', '/index'], (req, res) => {
-    let port = req.app.get('port'); // get global set variable served on every route
-    // send res to frontend with variables
-    res.render('login',{
-        id: 'index',
-        title: 'index page',
-        text: '<b>Bold Text</b>',
-        port: port
-    });
-    // res.send(`<h1>Express Home Page on port : ${port}</h1>`);
+    return res.redirect("/login");
 });
 module.exports = router; // export your module

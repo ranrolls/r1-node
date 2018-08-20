@@ -6,6 +6,38 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[id].chunk.js'
   },
+  module: {
+    rules: [
+    {
+      test: /\.(sass|scss)$/,
+      use: [
+        'to-string-loader',
+        process.env.NODE_ENV !== 'production' ? 'style-loader' : pathHelp.gWebpack.loader.miniCssExtract.loader,
+        { 
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+            minimize: true
+          }
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+            includePaths: [pathHelp.nm],
+            data: "$env: " + process.env.NODE_ENV + ";"
+          },
+        },
+      ]
+    }, {
+      test: /\.css$/,
+      include: pathHelp.client.src,
+      use: [
+        'style-loader',
+        'raw-loader',
+      ]
+    },
+  ]},
   plugins: [
     // new pathHelp.gWebpack.core.optimize.AggressiveSplittingPlugin({
     //   minSize: 50000,
@@ -14,6 +46,7 @@ module.exports = {
     // new pathHelp.gWebpack.core.optimize.AggressiveMergingPlugin({
     //   minSizeReduce: 0.5
     // }),
+    // new pathHelp.gWebpack.plugins.extractText("prod.css"),
     new pathHelp.gWebpack.core.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
     }),
