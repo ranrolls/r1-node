@@ -34,9 +34,14 @@ module.exports = {
             uglifyJs: require("uglifyjs-webpack-plugin"),
             optimizeCSSAssets: require("optimize-css-assets-webpack-plugin"),
             closure: require('closure-webpack-plugin'),
+            miniCssExtract: require("mini-css-extract-plugin"),
         },
         loader: {
-            miniCssExtract: require("mini-css-extract-plugin"),
+            autoPreFixer: require('autoprefixer'),
+            precss: require('precss'),
+            svgFragments: require('postcss-svg-fragments'),
+            pxtorem: require('postcss-pxtorem'),
+            cssnano: require('cssnano'),
         },
         tools: {
             webMerge: require('webpack-merge'),

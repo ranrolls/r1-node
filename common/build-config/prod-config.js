@@ -1,18 +1,12 @@
 var pathHelp = require('./variables');
 module.exports = {
-  mode: "production", // "production" | "development" | "none"  // Chosen mode tells webpack to use its built-in optimizations accordingly.
-  output: {
-    path: pathHelp.dist.prodDist,
-    filename: '[name].js',
-    chunkFilename: '[id].chunk.js'
-  },
   module: {
     rules: [
     {
       test: /\.(sass|scss)$/,
       use: [
         'to-string-loader',
-        process.env.NODE_ENV !== 'production' ? 'style-loader' : pathHelp.gWebpack.loader.miniCssExtract.loader,
+        'style-loader',
         { 
           loader: 'css-loader',
           options: {
@@ -37,6 +31,15 @@ module.exports = {
         'raw-loader',
       ]
     },
+    { test: /.*\.(gif|png|jpe?g|svg)$/i,
+      loaders: [
+        'file-loader?hash=sha512&digest=hex&name=assets/[hash].[ext]',
+        'image-webpack-loader?bypassOnDebug&optimizationLevel=5'
+      ] 
+    }, {
+      test: /\.(woff|woff2|ttf|eot|ico|otf)$/,
+      use: 'file-loader?name=assets/[hash].[ext]'
+    },
   ]},
   plugins: [
     // new pathHelp.gWebpack.core.optimize.AggressiveSplittingPlugin({
@@ -46,7 +49,6 @@ module.exports = {
     // new pathHelp.gWebpack.core.optimize.AggressiveMergingPlugin({
     //   minSizeReduce: 0.5
     // }),
-    // new pathHelp.gWebpack.plugins.extractText("prod.css"),
     new pathHelp.gWebpack.core.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
     }),
@@ -73,4 +75,10 @@ module.exports = {
   },
   bail: true,
   stats: 'none',
+  mode: "production", // "production" | "development" | "none"  // Chosen mode tells webpack to use its built-in optimizations accordingly.
+  output: {
+    path: pathHelp.dist.prodDist,
+    filename: '[name].js',
+    chunkFilename: '[id].chunk.js'
+  },
 }

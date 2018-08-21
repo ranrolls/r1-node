@@ -14,14 +14,10 @@ module.exports = {
             options: { configFileName: pathHelp.gWebpack.modules.core.tsConfig }
           } , 'angular2-template-loader'
         ]
-      }, 
-      {
+      }, {
         test: /\.html$/,
         loader: 'html-loader'
-      }, {
-        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico|otf)$/,
-        use: 'file-loader?name=assets/[name].[hash].[ext]'
-      },
+      }, 
     ]
   },
   plugins: [

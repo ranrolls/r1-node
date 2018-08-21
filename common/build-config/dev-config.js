@@ -6,8 +6,7 @@ module.exports = {
       test: /\.(sass|scss)$/,
       use: [
         'to-string-loader',
-        // fallback to style-loader in development
-        process.env.NODE_ENV !== 'production' ? 'style-loader' : pathHelp.gWebpack.loader.miniCssExtract.loader,
+        'style-loader',
         { 
           loader: 'css-loader',
           options: {
@@ -31,6 +30,10 @@ module.exports = {
         'style-loader',
         'raw-loader',
       ]
+    },
+    {
+      test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico|otf)$/,
+      use: 'file-loader?name=assets/[name].[hash].[ext]'
     },
   ]},
   mode: "development", // "production", "none"
