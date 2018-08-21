@@ -1,8 +1,8 @@
 const path= require('path');
-const rootPath = path.resolve(__dirname, "../../../");
+const rootPath = path.resolve(__dirname, "../../");
 const nodeVar = {
-    serverModulesPath: rootPath + "/server/node/modules/",
-    clientPresentation: rootPath + "/server/client/src/lib/presentation/",
+    serverModulesPath: rootPath + "/server/modules/",
+    clientPresentation: rootPath + "/client/src/lib/presentation/",
     rootNmPath: rootPath + "/node_modules",
     distDev: rootPath + "/dist/dev/",
     distProd: rootPath + "/dist/prod/",

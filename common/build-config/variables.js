@@ -18,12 +18,12 @@ module.exports = {
                 vendor: "vendor.ts",
             },
             login: {
-                entry: projectRoot + "/server/client/src/lib/presentation/" + "login/index.ts",
+                entry: projectRoot + "/client/src/lib/presentation/" + "login/index.ts",
                 wpConfig: projectRoot + "/common/modules/login/wp-config",
                 ejsTemplate: "login/index.html",
             },
             index: {
-                entry: projectRoot + "/server/client/src/lib/presentation/" + "index/index.ts",
+                entry: projectRoot + "/client/src/lib/presentation/" + "index/index.ts",
                 wpConfig: projectRoot + "/common/modules/index/wp-config",
                 ejsTemplate: "index/index.html",
             }
@@ -48,13 +48,13 @@ module.exports = {
         }
     },
     server: {
-        root: projectRoot + "/server/node",
+        root: projectRoot + "/server",
         static: projectRoot + "/server/static",
     },
     client : {
-        core: projectRoot + "/server/client",
-        src : projectRoot + "/server/client/src",
-        modules: projectRoot + "/server/client/src/lib/presentation/",
+        core: projectRoot + "/client",
+        src : projectRoot + "/client/src",
+        modules: projectRoot + "/client/src/lib/presentation/",
     },
     dist : {
         core: projectRoot + "/dist",
