@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { faUser, faKey, faDiceOne, faDiceTwo, faAt, faMobile } from '@fortawesome/free-solid-svg-icons';
 // import { faUser, faKey, faDiceOne, faDiceTwo, faAt, faMobile } from '@fortawesome/free-regular-svg-icons';
 @Component({
-    selector: 'form',
+    selector: 'iform',
     templateUrl: 'view.html',
     styleUrls: ['styles.scss']
 })
-export class FormComp implements OnInit {
+export class IFormComp implements OnInit {
     faUser = faUser;
     faKey = faKey;
     faDiceOne = faDiceOne;

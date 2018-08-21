@@ -6,7 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComp } from './comp';
 import { WrapperComp } from '../lib/presentation/wrapper/comp';
-import { FormComp } from '../lib/presentation/form/comp';
+import { IFormComp } from '../lib/presentation/iform/comp';
 import { SignUpComp } from '../lib/presentation/sign-up/comp';
 import { SignInComp } from '../lib/presentation/sign-in/comp';
 @NgModule({
@@ -20,7 +20,7 @@ import { SignInComp } from '../lib/presentation/sign-in/comp';
     declarations: [
         AppComp,
         WrapperComp,
-        FormComp,
+        IFormComp,
         SignUpComp,
         SignInComp,
     ],
